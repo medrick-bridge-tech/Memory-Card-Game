@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
-
+using Random = UnityEngine.Random;
 namespace DefaultNamespace
 {
     public class Deck
     {
         private List<Card> cards;
+        private Card card;
+        
 
         public Deck(List<Card> cards)
         {
@@ -13,32 +15,54 @@ namespace DefaultNamespace
 
         public void GenerateCardPairs()
         {
+            for (int i = 0; i < cards.Count; i++)
+            {
+                
+            }
             
         }
 
         public void Shuffle()
         {
-            // TODO:
+            System.Random random = new System.Random();
+            var index = cards.Count;
+            while (index > 1)
+            {
+                index--;
+                int k = random.Next(index + 1);
+                (cards[k], cards[index]) = (cards[index], cards[k]);
+            }
         }
 
         public void ShowCard(int index)
         {
-            // TODO:
+            cards[index].Show();
         }
         
         public void HideCard(int index)
         {
-            // TODO:
+            cards[index].Hide();
         }
 
         public void HideAllCards()
         {
-            // TODO:
+            for (int i = 0; i < cards.Count; i++)
+            {
+                card.Hide();
+            }
         }
 
         public bool IsEqual(int i, int j)
         {
-            // TODO:
+            if (i == j)
+            {
+                ShowCard(i);
+            }
+            else
+            {
+                HideCard(i);
+            }
+            return true;
         }
 
         public void UpdateDisplay()
@@ -51,8 +75,16 @@ namespace DefaultNamespace
 
         public bool IsAllCardsShown()
         {
-            // TODO:
-        }
+            foreach (var card in cards)
+            {
+                if (card.IsHidden)
+                {
+                    return false;
+                }
+            }
 
+            return true;
+        }
+       
     }
 }
