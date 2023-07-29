@@ -8,8 +8,8 @@ namespace DefaultNamespace
         [SerializeField] private Text text;
         private string value;
         private bool isHidden = true;
-
         public string Value => value;
+        public bool IsHidden => isHidden;
 
         public Card(string value)
         {
@@ -26,12 +26,12 @@ namespace DefaultNamespace
 
         public void Hide()
         {
-            // TODO: 
+            isHidden = true;
         }
 
         public void Show()
         {
-            // TODO:
+            isHidden = false;
         }
     }
 }
