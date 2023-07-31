@@ -6,16 +6,23 @@ namespace DefaultNamespace
     public class Card : MonoBehaviour
     {
         [SerializeField] private Text text;
+        
         private string value;
         private bool isHidden = true;
         public string Value => value;
         public bool IsHidden => isHidden;
-
-        public Card(string value)
+        public void Setup(string value)
         {
             this.value = value;
         }
-
+        public void Hide()
+        {
+            isHidden = true;
+        }
+        public void Show()
+        {
+            isHidden = false;
+        }
         public void UpdateDisplay()
         {
             if (isHidden)
@@ -24,14 +31,6 @@ namespace DefaultNamespace
                 text.text = value;
         }
 
-        public void Hide()
-        {
-            isHidden = true;
-        }
-
-        public void Show()
-        {
-            isHidden = false;
-        }
+        
     }
 }
