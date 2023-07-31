@@ -75,7 +75,6 @@ namespace DefaultNamespace
         }
         public void UpdateDisplay()
         {
-            Debug.Log("Updating Dis");
             foreach (var card in cards)
             {
                 card.UpdateDisplay();

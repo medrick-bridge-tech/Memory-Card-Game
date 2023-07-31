@@ -8,13 +8,12 @@ using UnityEngine.UI;
 
 public class Game : MonoBehaviour
 {
-    public bool isActive = true;
+    private bool isActive = true;
     [SerializeField] private List<Card> cards;
     private int firstInput = -1;
     private int secondInput = -1;
     private Deck cardsDeck;
     private Card card;
-
     private int InputCount
     {
         get
@@ -27,7 +26,6 @@ public class Game : MonoBehaviour
                 return 0;
         }
     }
-
     void Start()
     {
         cardsDeck = new Deck(cards);
@@ -36,37 +34,32 @@ public class Game : MonoBehaviour
         cardsDeck.HideAllCards();
         cardsDeck.UpdateDisplay();
     }
-
     void Update()
     {
         CheckInput();
     }
-
     private void ResetInputs()
     {
         firstInput = -1;
         secondInput = -1;
     }
-
     public void ClickButton(int index)
     {
-        
         if (firstInput == -1)
         {
             firstInput = index;
         }
         else if (secondInput == -1)
         {
+            if (index == firstInput)
+                return;
             secondInput = index;
         }
     }
-
     void CheckInput()
     {
-        isActive = true;
         if (InputCount == 1)
         {
-            isActive = false;
             cardsDeck.UpdateDisplay();
         }
         else if (InputCount == 2)
@@ -92,8 +85,5 @@ public class Game : MonoBehaviour
                 ResetInputs();
             }
         }
-            
     }
 }
-
-    
