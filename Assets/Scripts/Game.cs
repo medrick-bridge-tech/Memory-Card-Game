@@ -61,10 +61,10 @@ public class Game : MonoBehaviour
         if (InputCount == 1)
         {
             cardsDeck.UpdateDisplay();
+            cardsDeck.ShowCard(firstInput);
         }
         else if (InputCount == 2)
         {
-            cardsDeck.ShowCard(firstInput);
             cardsDeck.ShowCard(secondInput);
             cardsDeck.UpdateDisplay();
             if (cardsDeck.IsEqual(firstInput, secondInput))
